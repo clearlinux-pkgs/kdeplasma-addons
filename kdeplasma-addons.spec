@@ -6,7 +6,7 @@
 #
 Name     : kdeplasma-addons
 Version  : 5.13.4
-Release  : 3
+Release  : 4
 URL      : https://download.kde.org/stable/plasma/5.13.4/kdeplasma-addons-5.13.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.13.4/kdeplasma-addons-5.13.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.13.4/kdeplasma-addons-5.13.4.tar.xz.sig
@@ -92,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535192235
+export SOURCE_DATE_EPOCH=1535427669
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -100,7 +100,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535192235
+export SOURCE_DATE_EPOCH=1535427669
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kdeplasma-addons
 cp COPYING %{buildroot}/usr/share/doc/kdeplasma-addons/COPYING
@@ -432,6 +432,7 @@ popd
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/main.qml
 /usr/share/plasma/wallpapers/org.kde.potd/metadata.desktop
 /usr/share/plasma/wallpapers/org.kde.potd/metadata.json
+/usr/share/xdg/comic.knsrc
 
 %files dev
 %defattr(-,root,root,-)
