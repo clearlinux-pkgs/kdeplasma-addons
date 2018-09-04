@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.13.4
-Release  : 4
-URL      : https://download.kde.org/stable/plasma/5.13.4/kdeplasma-addons-5.13.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.13.4/kdeplasma-addons-5.13.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.13.4/kdeplasma-addons-5.13.4.tar.xz.sig
+Version  : 5.13.5
+Release  : 5
+URL      : https://download.kde.org/stable/plasma/5.13.5/kdeplasma-addons-5.13.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.13.5/kdeplasma-addons-5.13.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.13.5/kdeplasma-addons-5.13.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -19,25 +19,17 @@ Requires: kdeplasma-addons-data
 Requires: kdeplasma-addons-locales
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : karchive-dev
-BuildRequires : kdeclarative-dev
 BuildRequires : kholidays-dev
-BuildRequires : knotifications-dev
-BuildRequires : kpackage-dev
-BuildRequires : kparts-dev
 BuildRequires : kross-dev
 BuildRequires : krunner-dev
-BuildRequires : ktextwidgets-dev
-BuildRequires : kunitconversion-dev
-BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-framework-dev
 BuildRequires : qtwebengine-dev
-BuildRequires : sonnet-dev
 
 %description
-Wikipedia Runner
+Kate Session Runner
 ========================
-This runner searches on Wikipedia for the term typed into KRunner.
+This Runner loads a list of Kate's sessions and matches
+KRunner's queries against it.
 
 %package data
 Summary: data components for the kdeplasma-addons package.
@@ -85,14 +77,14 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.13.4
+%setup -q -n kdeplasma-addons-5.13.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535427669
+export SOURCE_DATE_EPOCH=1536086881
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -100,7 +92,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535427669
+export SOURCE_DATE_EPOCH=1536086881
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kdeplasma-addons
 cp COPYING %{buildroot}/usr/share/doc/kdeplasma-addons/COPYING
