@@ -6,7 +6,7 @@
 #
 Name     : kdeplasma-addons
 Version  : 5.14.3
-Release  : 9
+Release  : 10
 URL      : https://download.kde.org/stable/plasma/5.14.3/kdeplasma-addons-5.14.3.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.14.3/kdeplasma-addons-5.14.3.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.14.3/kdeplasma-addons-5.14.3.tar.xz.sig
@@ -19,24 +19,25 @@ Requires: kdeplasma-addons-license = %{version}-%{release}
 Requires: kdeplasma-addons-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : karchive-dev
+BuildRequires : kdeclarative-dev
 BuildRequires : kholidays-dev
+BuildRequires : knotifications-dev
+BuildRequires : kpackage-dev
+BuildRequires : kparts-dev
 BuildRequires : kross-dev
 BuildRequires : krunner-dev
+BuildRequires : ktextwidgets-dev
+BuildRequires : kunitconversion-dev
+BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-framework-dev
 BuildRequires : qtwebengine-dev
+BuildRequires : sonnet-dev
 
 %description
 Wikipedia Runner
 ========================
 This runner searches on Wikipedia for the term typed into KRunner.
-
-%package abi
-Summary: abi components for the kdeplasma-addons package.
-Group: Default
-
-%description abi
-abi components for the kdeplasma-addons package.
-
 
 %package data
 Summary: data components for the kdeplasma-addons package.
@@ -91,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541531306
+export SOURCE_DATE_EPOCH=1542740358
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -99,7 +100,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541531306
+export SOURCE_DATE_EPOCH=1542740358
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/COPYING
@@ -141,13 +142,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libplasmacomicprovidercore.so.1.0.0.abi
-/usr/share/abi/libplasmacomicprovidercore.so.1.abi
-/usr/share/abi/libplasmapotdprovidercore.so.1.0.0.abi
-/usr/share/abi/libplasmapotdprovidercore.so.1.abi
 
 %files data
 %defattr(-,root,root,-)
