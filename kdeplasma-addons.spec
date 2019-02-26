@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.15.1
-Release  : 14
-URL      : https://download.kde.org/stable/plasma/5.15.1/kdeplasma-addons-5.15.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.15.1/kdeplasma-addons-5.15.1.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.15.1/kdeplasma-addons-5.15.1.tar.xz.sig
+Version  : 5.15.2
+Release  : 15
+URL      : https://download.kde.org/stable/plasma/5.15.2/kdeplasma-addons-5.15.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.15.2/kdeplasma-addons-5.15.2.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.15.2/kdeplasma-addons-5.15.2.tar.xz.sig
 Summary  : All kind of addons to improve your Plasma experience
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -44,6 +44,7 @@ Group: Development
 Requires: kdeplasma-addons-lib = %{version}-%{release}
 Requires: kdeplasma-addons-data = %{version}-%{release}
 Provides: kdeplasma-addons-devel = %{version}-%{release}
+Requires: kdeplasma-addons = %{version}-%{release}
 
 %description dev
 dev components for the kdeplasma-addons package.
@@ -76,14 +77,14 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.15.1
+%setup -q -n kdeplasma-addons-5.15.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550587360
+export SOURCE_DATE_EPOCH=1551200187
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -91,7 +92,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1550587360
+export SOURCE_DATE_EPOCH=1551200187
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/COPYING
