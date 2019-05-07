@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.15.4
-Release  : 19
-URL      : https://download.kde.org/stable/plasma/5.15.4/kdeplasma-addons-5.15.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.15.4/kdeplasma-addons-5.15.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.15.4/kdeplasma-addons-5.15.4.tar.xz.sig
+Version  : 5.15.5
+Release  : 20
+URL      : https://download.kde.org/stable/plasma/5.15.5/kdeplasma-addons-5.15.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.15.5/kdeplasma-addons-5.15.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.15.5/kdeplasma-addons-5.15.5.tar.xz.sig
 Summary  : All kind of addons to improve your Plasma experience
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -19,20 +19,11 @@ Requires: kdeplasma-addons-license = %{version}-%{release}
 Requires: kdeplasma-addons-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : karchive-dev
-BuildRequires : kdeclarative-dev
 BuildRequires : kholidays-dev
-BuildRequires : knotifications-dev
-BuildRequires : kpackage-dev
-BuildRequires : kparts-dev
 BuildRequires : kross-dev
 BuildRequires : krunner-dev
-BuildRequires : ktextwidgets-dev
-BuildRequires : kunitconversion-dev
-BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-framework-dev
 BuildRequires : qtwebengine-dev
-BuildRequires : sonnet-dev
 
 %description
 Wikipedia Runner
@@ -86,14 +77,14 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.15.4
+%setup -q -n kdeplasma-addons-5.15.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557009859
+export SOURCE_DATE_EPOCH=1557240352
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -108,7 +99,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557009859
+export SOURCE_DATE_EPOCH=1557240352
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/COPYING
