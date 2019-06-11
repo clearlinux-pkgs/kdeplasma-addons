@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.15.5
-Release  : 20
-URL      : https://download.kde.org/stable/plasma/5.15.5/kdeplasma-addons-5.15.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.15.5/kdeplasma-addons-5.15.5.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.15.5/kdeplasma-addons-5.15.5.tar.xz.sig
+Version  : 5.16.0
+Release  : 21
+URL      : https://download.kde.org/stable/plasma/5.16.0/kdeplasma-addons-5.16.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.0/kdeplasma-addons-5.16.0.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.16.0/kdeplasma-addons-5.16.0.tar.xz.sig
 Summary  : All kind of addons to improve your Plasma experience
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -45,6 +45,7 @@ Requires: kdeplasma-addons-lib = %{version}-%{release}
 Requires: kdeplasma-addons-data = %{version}-%{release}
 Provides: kdeplasma-addons-devel = %{version}-%{release}
 Requires: kdeplasma-addons = %{version}-%{release}
+Requires: kdeplasma-addons = %{version}-%{release}
 
 %description dev
 dev components for the kdeplasma-addons package.
@@ -77,14 +78,14 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.15.5
+%setup -q -n kdeplasma-addons-5.16.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557240352
+export SOURCE_DATE_EPOCH=1560266989
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -99,7 +100,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557240352
+export SOURCE_DATE_EPOCH=1560266989
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/COPYING
@@ -116,12 +117,10 @@ popd
 %find_lang plasma_applet_org.kde.plasma.fuzzyclock
 %find_lang plasma_applet_org.kde.plasma.konsoleprofiles
 %find_lang plasma_applet_org.kde.plasma.mediaframe
-%find_lang plasma_applet_org.kde.plasma.minimizeall
 %find_lang plasma_applet_org.kde.plasma.notes
 %find_lang plasma_applet_org.kde.plasma.private.grouping
 %find_lang plasma_applet_org.kde.plasma.quicklaunch
 %find_lang plasma_applet_org.kde.plasma.quickshare
-%find_lang plasma_applet_org.kde.plasma.showdesktop
 %find_lang plasma_applet_org.kde.plasma.systemloadviewer
 %find_lang plasma_applet_org.kde.plasma.timer
 %find_lang plasma_applet_org.kde.plasma.userswitcher
@@ -147,6 +146,7 @@ popd
 /usr/share/icons/hicolor/scalable/apps/accessories-dictionary.svgz
 /usr/share/icons/hicolor/scalable/apps/fifteenpuzzle.svgz
 /usr/share/kdevappwizard/templates/plasmapotdprovider.tar.bz2
+/usr/share/knsrcfiles/comic.knsrc
 /usr/share/kservices5/kwin/kwin4_desktop_switcher_previews.desktop
 /usr/share/kservices5/kwin/kwin4_window_switcher_big_icons.desktop
 /usr/share/kservices5/kwin/kwin4_window_switcher_compact.desktop
@@ -168,12 +168,10 @@ popd
 /usr/share/kservices5/plasma-applet-org.kde.plasma.kickerdash.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.konsoleprofiles.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.mediaframe.desktop
-/usr/share/kservices5/plasma-applet-org.kde.plasma.minimizeall.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.notes.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.private.grouping.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.quicklaunch.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.quickshare.desktop
-/usr/share/kservices5/plasma-applet-org.kde.plasma.showdesktop.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.systemloadviewer.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.timer.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.userswitcher.desktop
@@ -230,11 +228,9 @@ popd
 /usr/share/metainfo/org.kde.plasma.kickerdash.appdata.xml
 /usr/share/metainfo/org.kde.plasma.konsoleprofiles.appdata.xml
 /usr/share/metainfo/org.kde.plasma.mediaframe.appdata.xml
-/usr/share/metainfo/org.kde.plasma.minimizeall.appdata.xml
 /usr/share/metainfo/org.kde.plasma.notes.appdata.xml
 /usr/share/metainfo/org.kde.plasma.quicklaunch.appdata.xml
 /usr/share/metainfo/org.kde.plasma.quickshare.appdata.xml
-/usr/share/metainfo/org.kde.plasma.showdesktop.appdata.xml
 /usr/share/metainfo/org.kde.plasma.systemloadviewer.appdata.xml
 /usr/share/metainfo/org.kde.plasma.timer.appdata.xml
 /usr/share/metainfo/org.kde.plasma.userswitcher.appdata.xml
@@ -319,10 +315,6 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.mediaframe/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.mediaframe/metadata.desktop
 /usr/share/plasma/plasmoids/org.kde.plasma.mediaframe/metadata.json
-/usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/contents/config/main.xml
-/usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/contents/ui/main.qml
-/usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/metadata.desktop
-/usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/ui/configAppearance.qml
@@ -356,10 +348,6 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.quickshare/contents/ui/settingsGeneral.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.quickshare/metadata.desktop
 /usr/share/plasma/plasmoids/org.kde.plasma.quickshare/metadata.json
-/usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/contents/config/main.xml
-/usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/contents/ui/main.qml
-/usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/metadata.desktop
-/usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.systemloadviewer/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.systemloadviewer/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.systemloadviewer/contents/ui/BarMonitor.qml
@@ -431,7 +419,6 @@ popd
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/main.qml
 /usr/share/plasma/wallpapers/org.kde.potd/metadata.desktop
 /usr/share/plasma/wallpapers/org.kde.potd/metadata.json
-/usr/share/xdg/comic.knsrc
 
 %files dev
 %defattr(-,root,root,-)
@@ -493,8 +480,6 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/private/purpose/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/quicklaunch/libquicklaunchplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/quicklaunch/qmldir
-/usr/lib64/qt5/qml/org/kde/plasma/private/showdesktop/libshowdesktopplugin.so
-/usr/lib64/qt5/qml/org/kde/plasma/private/showdesktop/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/timer/libtimerplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/timer/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/weather/libweatherplugin.so
@@ -507,6 +492,6 @@ popd
 /usr/share/package-licenses/kdeplasma-addons/COPYING
 /usr/share/package-licenses/kdeplasma-addons/COPYING.LIB
 
-%files locales -f plasma_applet_org.kde.plasma.binaryclock.lang -f plasma_applet_org.kde.plasma.calculator.lang -f plasma_applet_org.kde.plasma.colorpicker.lang -f plasma_applet_org.kde.plasma.comic.lang -f plasma_applet_org.kde.plasma.diskquota.lang -f plasma_applet_org.kde.plasma.fifteenpuzzle.lang -f plasma_applet_org.kde.plasma.fuzzyclock.lang -f plasma_applet_org.kde.plasma.konsoleprofiles.lang -f plasma_applet_org.kde.plasma.mediaframe.lang -f plasma_applet_org.kde.plasma.minimizeall.lang -f plasma_applet_org.kde.plasma.notes.lang -f plasma_applet_org.kde.plasma.private.grouping.lang -f plasma_applet_org.kde.plasma.quicklaunch.lang -f plasma_applet_org.kde.plasma.quickshare.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.systemloadviewer.lang -f plasma_applet_org.kde.plasma.timer.lang -f plasma_applet_org.kde.plasma.userswitcher.lang -f plasma_applet_org.kde.plasma.weather.lang -f plasma_packagestructure_comic.lang -f plasma_runner_CharacterRunner.lang -f plasma_runner_converterrunner.lang -f plasma_runner_datetime.lang -f plasma_runner_katesessions.lang -f plasma_runner_krunner_dictionary.lang -f plasma_runner_mediawiki.lang -f plasma_runner_spellcheckrunner.lang -f plasma_applet_org.kde.plasma.keyboardindicator.lang -f plasma_applet_org.kde.plasma_applet_dict.lang -f plasma_calendar_astronomicalevents.lang -f plasma_runner_konsoleprofiles.lang
+%files locales -f plasma_applet_org.kde.plasma.binaryclock.lang -f plasma_applet_org.kde.plasma.calculator.lang -f plasma_applet_org.kde.plasma.colorpicker.lang -f plasma_applet_org.kde.plasma.comic.lang -f plasma_applet_org.kde.plasma.diskquota.lang -f plasma_applet_org.kde.plasma.fifteenpuzzle.lang -f plasma_applet_org.kde.plasma.fuzzyclock.lang -f plasma_applet_org.kde.plasma.konsoleprofiles.lang -f plasma_applet_org.kde.plasma.mediaframe.lang -f plasma_applet_org.kde.plasma.notes.lang -f plasma_applet_org.kde.plasma.private.grouping.lang -f plasma_applet_org.kde.plasma.quicklaunch.lang -f plasma_applet_org.kde.plasma.quickshare.lang -f plasma_applet_org.kde.plasma.systemloadviewer.lang -f plasma_applet_org.kde.plasma.timer.lang -f plasma_applet_org.kde.plasma.userswitcher.lang -f plasma_applet_org.kde.plasma.weather.lang -f plasma_packagestructure_comic.lang -f plasma_runner_CharacterRunner.lang -f plasma_runner_converterrunner.lang -f plasma_runner_datetime.lang -f plasma_runner_katesessions.lang -f plasma_runner_krunner_dictionary.lang -f plasma_runner_mediawiki.lang -f plasma_runner_spellcheckrunner.lang -f plasma_applet_org.kde.plasma.keyboardindicator.lang -f plasma_applet_org.kde.plasma_applet_dict.lang -f plasma_calendar_astronomicalevents.lang -f plasma_runner_konsoleprofiles.lang
 %defattr(-,root,root,-)
 
