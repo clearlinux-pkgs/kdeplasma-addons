@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.16.1
-Release  : 22
-URL      : https://download.kde.org/stable/plasma/5.16.1/kdeplasma-addons-5.16.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.1/kdeplasma-addons-5.16.1.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.16.1/kdeplasma-addons-5.16.1.tar.xz.sig
+Version  : 5.16.2
+Release  : 23
+URL      : https://download.kde.org/stable/plasma/5.16.2/kdeplasma-addons-5.16.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.2/kdeplasma-addons-5.16.2.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.16.2/kdeplasma-addons-5.16.2.tar.xz.sig
 Summary  : All kind of addons to improve your Plasma experience
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -78,14 +78,14 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.16.1
+%setup -q -n kdeplasma-addons-5.16.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1560869702
+export SOURCE_DATE_EPOCH=1561473482
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -101,7 +101,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1560869702
+export SOURCE_DATE_EPOCH=1561473482
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/COPYING
