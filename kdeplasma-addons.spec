@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.16.5
-Release  : 26
-URL      : https://download.kde.org/stable/plasma/5.16.5/kdeplasma-addons-5.16.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.5/kdeplasma-addons-5.16.5.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.5/kdeplasma-addons-5.16.5.tar.xz.sig
+Version  : 5.17.0
+Release  : 27
+URL      : https://download.kde.org/stable/plasma/5.17.0/kdeplasma-addons-5.17.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.17.0/kdeplasma-addons-5.17.0.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.17.0/kdeplasma-addons-5.17.0.tar.xz.sig
 Summary  : All kind of addons to improve your Plasma experience
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -78,14 +78,14 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.16.5
+%setup -q -n kdeplasma-addons-5.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567641322
+export SOURCE_DATE_EPOCH=1571153658
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -98,15 +98,15 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567641322
+export SOURCE_DATE_EPOCH=1571153658
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
-cp COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kdeplasma-addons/COPYING.LIB
+cp %{_builddir}/kdeplasma-addons-5.17.0/COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kdeplasma-addons-5.17.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -240,7 +240,6 @@ popd
 /usr/share/metainfo/org.kde.plasma.webbrowser.appdata.xml
 /usr/share/metainfo/org.kde.plasma_applet_dict.appdata.xml
 /usr/share/metainfo/org.kde.potd.appdata.xml
-/usr/share/plasma/desktoptheme/default/icons/quota.svg
 /usr/share/plasma/desktoptheme/default/weather/wind-arrows.svgz
 /usr/share/plasma/desktoptheme/default/widgets/timer.svgz
 /usr/share/plasma/plasmoids/org.kde.plasma.activitypager/metadata.desktop
@@ -319,6 +318,7 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.mediaframe/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/ui/ShortcutMenuItem.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/ui/configAppearance.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/metadata.desktop
@@ -465,6 +465,7 @@ popd
 /usr/lib64/qt5/plugins/potd/plasma_potd_flickrprovider.so
 /usr/lib64/qt5/plugins/potd/plasma_potd_natgeoprovider.so
 /usr/lib64/qt5/plugins/potd/plasma_potd_noaaprovider.so
+/usr/lib64/qt5/plugins/potd/plasma_potd_unsplashprovider.so
 /usr/lib64/qt5/plugins/potd/plasma_potd_wcpotdprovider.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/colorpicker/libcolorpickerplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/colorpicker/qmldir
@@ -491,8 +492,8 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kdeplasma-addons/COPYING
-/usr/share/package-licenses/kdeplasma-addons/COPYING.LIB
+/usr/share/package-licenses/kdeplasma-addons/7c203dee3a03037da436df03c4b25b659c073976
+/usr/share/package-licenses/kdeplasma-addons/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 
 %files locales -f plasma_applet_org.kde.plasma.binaryclock.lang -f plasma_applet_org.kde.plasma.calculator.lang -f plasma_applet_org.kde.plasma.colorpicker.lang -f plasma_applet_org.kde.plasma.comic.lang -f plasma_applet_org.kde.plasma.diskquota.lang -f plasma_applet_org.kde.plasma.fifteenpuzzle.lang -f plasma_applet_org.kde.plasma.fuzzyclock.lang -f plasma_applet_org.kde.plasma.konsoleprofiles.lang -f plasma_applet_org.kde.plasma.mediaframe.lang -f plasma_applet_org.kde.plasma.notes.lang -f plasma_applet_org.kde.plasma.private.grouping.lang -f plasma_applet_org.kde.plasma.quicklaunch.lang -f plasma_applet_org.kde.plasma.quickshare.lang -f plasma_applet_org.kde.plasma.systemloadviewer.lang -f plasma_applet_org.kde.plasma.timer.lang -f plasma_applet_org.kde.plasma.userswitcher.lang -f plasma_applet_org.kde.plasma.weather.lang -f plasma_packagestructure_comic.lang -f plasma_runner_CharacterRunner.lang -f plasma_runner_converterrunner.lang -f plasma_runner_datetime.lang -f plasma_runner_katesessions.lang -f plasma_runner_krunner_dictionary.lang -f plasma_runner_mediawiki.lang -f plasma_runner_spellcheckrunner.lang -f plasma_applet_org.kde.plasma.keyboardindicator.lang -f plasma_applet_org.kde.plasma_applet_dict.lang -f plasma_calendar_astronomicalevents.lang -f plasma_runner_konsoleprofiles.lang
 %defattr(-,root,root,-)
