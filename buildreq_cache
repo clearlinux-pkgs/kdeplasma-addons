@@ -1,4 +1,4 @@
-5.17.0
+5.17.1
 karchive-dev
 kdeclarative-dev
 kholidays-dev
@@ -13,3 +13,4 @@ kwindowsystem-dev
 plasma-framework-dev
 qtwebengine-dev
 sonnet-dev
+util-linux
