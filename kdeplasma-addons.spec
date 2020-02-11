@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.17.5
-Release  : 33
-URL      : https://download.kde.org/stable/plasma/5.17.5/kdeplasma-addons-5.17.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.17.5/kdeplasma-addons-5.17.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.17.5/kdeplasma-addons-5.17.5.tar.xz.sig
+Version  : 5.18.0
+Release  : 34
+URL      : https://download.kde.org/stable/plasma/5.18.0/kdeplasma-addons-5.18.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.0/kdeplasma-addons-5.18.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.0/kdeplasma-addons-5.18.0.tar.xz.sig
 Summary  : All kind of addons to improve your Plasma experience
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -78,15 +78,15 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.17.5
-cd %{_builddir}/kdeplasma-addons-5.17.5
+%setup -q -n kdeplasma-addons-5.18.0
+cd %{_builddir}/kdeplasma-addons-5.18.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578425901
+export SOURCE_DATE_EPOCH=1581433868
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -103,11 +103,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1578425901
+export SOURCE_DATE_EPOCH=1581433868
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
-cp %{_builddir}/kdeplasma-addons-5.17.5/COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kdeplasma-addons-5.17.5/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdeplasma-addons-5.18.0/COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kdeplasma-addons-5.18.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -138,6 +138,7 @@ popd
 %find_lang plasma_runner_spellcheckrunner
 %find_lang plasma_applet_org.kde.plasma.keyboardindicator
 %find_lang plasma_applet_org.kde.plasma_applet_dict
+%find_lang plasma_applet_org.kde.plasma.nightcolorcontrol
 %find_lang plasma_calendar_astronomicalevents
 %find_lang plasma_runner_konsoleprofiles
 
@@ -157,6 +158,7 @@ popd
 /usr/share/kservices5/kwin/kwin4_window_switcher_present_windows.desktop
 /usr/share/kservices5/kwin/kwin4_window_switcher_small_icons.desktop
 /usr/share/kservices5/kwin/kwin4_window_switcher_text.desktop
+/usr/share/kservices5/kwin/kwin4_window_switcher_thumbnail_grid.desktop
 /usr/share/kservices5/kwin/kwin4_window_switcher_thumbnails.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.activitypager.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.binaryclock.desktop
@@ -171,6 +173,7 @@ popd
 /usr/share/kservices5/plasma-applet-org.kde.plasma.kickerdash.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.konsoleprofiles.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.mediaframe.desktop
+/usr/share/kservices5/plasma-applet-org.kde.plasma.nightcolorcontrol.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.notes.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.private.grouping.desktop
 /usr/share/kservices5/plasma-applet-org.kde.plasma.quicklaunch.desktop
@@ -214,6 +217,8 @@ popd
 /usr/share/kwin/tabbox/small_icons/metadata.desktop
 /usr/share/kwin/tabbox/text/contents/ui/main.qml
 /usr/share/kwin/tabbox/text/metadata.desktop
+/usr/share/kwin/tabbox/thumbnail_grid/contents/ui/main.qml
+/usr/share/kwin/tabbox/thumbnail_grid/metadata.desktop
 /usr/share/kwin/tabbox/thumbnails/contents/ui/main.qml
 /usr/share/kwin/tabbox/thumbnails/metadata.desktop
 /usr/share/metainfo/org.kde.haenau.appdata.xml
@@ -231,6 +236,7 @@ popd
 /usr/share/metainfo/org.kde.plasma.kickerdash.appdata.xml
 /usr/share/metainfo/org.kde.plasma.konsoleprofiles.appdata.xml
 /usr/share/metainfo/org.kde.plasma.mediaframe.appdata.xml
+/usr/share/metainfo/org.kde.plasma.nightcolorcontrol.appdata.xml
 /usr/share/metainfo/org.kde.plasma.notes.appdata.xml
 /usr/share/metainfo/org.kde.plasma.quicklaunch.appdata.xml
 /usr/share/metainfo/org.kde.plasma.quickshare.appdata.xml
@@ -317,6 +323,9 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.mediaframe/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.mediaframe/metadata.desktop
 /usr/share/plasma/plasmoids/org.kde.plasma.mediaframe/metadata.json
+/usr/share/plasma/plasmoids/org.kde.plasma.nightcolorcontrol/contents/ui/main.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.nightcolorcontrol/metadata.desktop
+/usr/share/plasma/plasmoids/org.kde.plasma.nightcolorcontrol/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.notes/contents/ui/ShortcutMenuItem.qml
@@ -478,6 +487,8 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/private/fifteenpuzzle/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/mediaframe/libmediaframeplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/mediaframe/qmldir
+/usr/lib64/qt5/qml/org/kde/plasma/private/nightcolorcontrol/libnightcolorcontrolplugin.so
+/usr/lib64/qt5/qml/org/kde/plasma/private/nightcolorcontrol/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/notes/libnotesplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/notes/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/purpose/libpurposeplugin.so
@@ -496,6 +507,6 @@ popd
 /usr/share/package-licenses/kdeplasma-addons/7c203dee3a03037da436df03c4b25b659c073976
 /usr/share/package-licenses/kdeplasma-addons/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 
-%files locales -f plasma_applet_org.kde.plasma.binaryclock.lang -f plasma_applet_org.kde.plasma.calculator.lang -f plasma_applet_org.kde.plasma.colorpicker.lang -f plasma_applet_org.kde.plasma.comic.lang -f plasma_applet_org.kde.plasma.diskquota.lang -f plasma_applet_org.kde.plasma.fifteenpuzzle.lang -f plasma_applet_org.kde.plasma.fuzzyclock.lang -f plasma_applet_org.kde.plasma.konsoleprofiles.lang -f plasma_applet_org.kde.plasma.mediaframe.lang -f plasma_applet_org.kde.plasma.notes.lang -f plasma_applet_org.kde.plasma.private.grouping.lang -f plasma_applet_org.kde.plasma.quicklaunch.lang -f plasma_applet_org.kde.plasma.quickshare.lang -f plasma_applet_org.kde.plasma.systemloadviewer.lang -f plasma_applet_org.kde.plasma.timer.lang -f plasma_applet_org.kde.plasma.userswitcher.lang -f plasma_applet_org.kde.plasma.weather.lang -f plasma_packagestructure_comic.lang -f plasma_runner_CharacterRunner.lang -f plasma_runner_converterrunner.lang -f plasma_runner_datetime.lang -f plasma_runner_katesessions.lang -f plasma_runner_krunner_dictionary.lang -f plasma_runner_mediawiki.lang -f plasma_runner_spellcheckrunner.lang -f plasma_applet_org.kde.plasma.keyboardindicator.lang -f plasma_applet_org.kde.plasma_applet_dict.lang -f plasma_calendar_astronomicalevents.lang -f plasma_runner_konsoleprofiles.lang
+%files locales -f plasma_applet_org.kde.plasma.binaryclock.lang -f plasma_applet_org.kde.plasma.calculator.lang -f plasma_applet_org.kde.plasma.colorpicker.lang -f plasma_applet_org.kde.plasma.comic.lang -f plasma_applet_org.kde.plasma.diskquota.lang -f plasma_applet_org.kde.plasma.fifteenpuzzle.lang -f plasma_applet_org.kde.plasma.fuzzyclock.lang -f plasma_applet_org.kde.plasma.konsoleprofiles.lang -f plasma_applet_org.kde.plasma.mediaframe.lang -f plasma_applet_org.kde.plasma.notes.lang -f plasma_applet_org.kde.plasma.private.grouping.lang -f plasma_applet_org.kde.plasma.quicklaunch.lang -f plasma_applet_org.kde.plasma.quickshare.lang -f plasma_applet_org.kde.plasma.systemloadviewer.lang -f plasma_applet_org.kde.plasma.timer.lang -f plasma_applet_org.kde.plasma.userswitcher.lang -f plasma_applet_org.kde.plasma.weather.lang -f plasma_packagestructure_comic.lang -f plasma_runner_CharacterRunner.lang -f plasma_runner_converterrunner.lang -f plasma_runner_datetime.lang -f plasma_runner_katesessions.lang -f plasma_runner_krunner_dictionary.lang -f plasma_runner_mediawiki.lang -f plasma_runner_spellcheckrunner.lang -f plasma_applet_org.kde.plasma.keyboardindicator.lang -f plasma_applet_org.kde.plasma_applet_dict.lang -f plasma_applet_org.kde.plasma.nightcolorcontrol.lang -f plasma_calendar_astronomicalevents.lang -f plasma_runner_konsoleprofiles.lang
 %defattr(-,root,root,-)
 

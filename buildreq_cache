@@ -1,16 +1,6 @@
-5.17.5
-karchive-dev
-kdeclarative-dev
+5.18.0
 kholidays-dev
-knotifications-dev
-kpackage-dev
-kparts-dev
 kross-dev
 krunner-dev
-ktextwidgets-dev
-kunitconversion-dev
-kwindowsystem-dev
 plasma-framework-dev
 qtwebengine-dev
-sonnet-dev
-util-linux
