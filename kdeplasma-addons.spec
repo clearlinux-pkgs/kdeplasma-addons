@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.19.2
-Release  : 43
-URL      : https://download.kde.org/stable/plasma/5.19.2/kdeplasma-addons-5.19.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.19.2/kdeplasma-addons-5.19.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.19.2/kdeplasma-addons-5.19.2.tar.xz.sig
+Version  : 5.19.4
+Release  : 44
+URL      : https://download.kde.org/stable/plasma/5.19.4/kdeplasma-addons-5.19.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.19.4/kdeplasma-addons-5.19.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.19.4/kdeplasma-addons-5.19.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -81,15 +81,15 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.19.2
-cd %{_builddir}/kdeplasma-addons-5.19.2
+%setup -q -n kdeplasma-addons-5.19.4
+cd %{_builddir}/kdeplasma-addons-5.19.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592938884
+export SOURCE_DATE_EPOCH=1597639217
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -101,15 +101,15 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592938884
+export SOURCE_DATE_EPOCH=1597639217
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
-cp %{_builddir}/kdeplasma-addons-5.19.2/COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kdeplasma-addons-5.19.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdeplasma-addons-5.19.4/COPYING %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kdeplasma-addons-5.19.4/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
