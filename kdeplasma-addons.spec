@@ -4,7 +4,7 @@
 #
 Name     : kdeplasma-addons
 Version  : 5.23.0
-Release  : 55
+Release  : 56
 URL      : https://download.kde.org/stable/plasma/5.23.0/kdeplasma-addons-5.23.0.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.23.0/kdeplasma-addons-5.23.0.tar.xz
 Summary  : No detailed summary available
