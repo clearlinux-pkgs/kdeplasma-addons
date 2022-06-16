@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.24.5
-Release  : 67
-URL      : https://download.kde.org/stable/plasma/5.24.5/kdeplasma-addons-5.24.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.24.5/kdeplasma-addons-5.24.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.24.5/kdeplasma-addons-5.24.5.tar.xz.sig
+Version  : 5.25.0
+Release  : 68
+URL      : https://download.kde.org/stable/plasma/5.25.0/kdeplasma-addons-5.25.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.25.0/kdeplasma-addons-5.25.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.25.0/kdeplasma-addons-5.25.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
+License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
 Requires: kdeplasma-addons-data = %{version}-%{release}
 Requires: kdeplasma-addons-lib = %{version}-%{release}
 Requires: kdeplasma-addons-license = %{version}-%{release}
@@ -78,15 +78,15 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.24.5
-cd %{_builddir}/kdeplasma-addons-5.24.5
+%setup -q -n kdeplasma-addons-5.25.0
+cd %{_builddir}/kdeplasma-addons-5.25.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651621978
+export SOURCE_DATE_EPOCH=1655413159
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -102,23 +102,24 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1651621978
+export SOURCE_DATE_EPOCH=1655413159
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kdeplasma-addons-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kdeplasma-addons-5.25.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -159,7 +160,7 @@ popd
 %defattr(-,root,root,-)
 /usr/share/icons/hicolor/scalable/apps/accessories-dictionary.svgz
 /usr/share/icons/hicolor/scalable/apps/fifteenpuzzle.svgz
-/usr/share/kdevappwizard/templates/plasmapotdprovider.tar.bz2
+/usr/share/kdevfiletemplates/templates/plasmapotdprovider.tar.bz2
 /usr/share/knsrcfiles/comic.knsrc
 /usr/share/kservices5/kwin/kwin4_desktop_switcher_previews.desktop
 /usr/share/kservices5/kwin/kwin4_window_switcher_big_icons.desktop
@@ -175,6 +176,7 @@ popd
 /usr/share/kservices5/plasma-wallpaper-org.kde.haenau.desktop
 /usr/share/kservices5/plasma-wallpaper-org.kde.hunyango.desktop
 /usr/share/kservices5/plasma-wallpaper-org.kde.potd.desktop
+/usr/share/kservicetypes5/plasma-comic.desktop
 /usr/share/kwin/desktoptabbox/previews/contents/ui/main.qml
 /usr/share/kwin/desktoptabbox/previews/metadata.desktop
 /usr/share/kwin/tabbox/big_icons/contents/ui/IconTabBox.qml
@@ -330,7 +332,9 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.timer/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/contents/ui/ActionListDelegate.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/contents/ui/ListDelegate.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/contents/ui/UserListDelegate.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/contents/ui/configGeneral.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.userswitcher/metadata.json
@@ -356,6 +360,7 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.webbrowser/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.webbrowser/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/config/config.qml
+/usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/ui/ConfigDictionaries.qml
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/metadata.json
@@ -372,6 +377,10 @@ popd
 /usr/share/plasma/wallpapers/org.kde.hunyango/metadata.desktop
 /usr/share/plasma/wallpapers/org.kde.hunyango/metadata.json
 /usr/share/plasma/wallpapers/org.kde.potd/contents/config/main.xml
+/usr/share/plasma/wallpapers/org.kde.potd/contents/ui/ActionContextMenu.qml
+/usr/share/plasma/wallpapers/org.kde.potd/contents/ui/SelectableLabel.qml
+/usr/share/plasma/wallpapers/org.kde.potd/contents/ui/WallpaperDelegate.qml
+/usr/share/plasma/wallpapers/org.kde.potd/contents/ui/WallpaperPreview.qml
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/config.qml
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/main.qml
 /usr/share/plasma/wallpapers/org.kde.potd/metadata.desktop
@@ -390,8 +399,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libplasmacomicprovidercore.so.1
-/usr/lib64/libplasmacomicprovidercore.so.1.0.0
 /usr/lib64/libplasmapotdprovidercore.so.1
 /usr/lib64/libplasmapotdprovidercore.so.1.0.0
 /usr/lib64/qt5/plugins/kf5/krunner/kcms/kcm_krunner_charrunner.so
@@ -405,14 +412,11 @@ popd
 /usr/lib64/qt5/plugins/kf5/krunner/krunner_spellcheck.so
 /usr/lib64/qt5/plugins/kf5/krunner/unitconverter.so
 /usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_comic.so
+/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.comic.so
 /usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.grouping.so
 /usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.private.grouping.so
-/usr/lib64/qt5/plugins/plasma/applets/plasma_applet_comic.so
-/usr/lib64/qt5/plugins/plasma/applets/plasma_applet_weather.so
-/usr/lib64/qt5/plugins/plasma/dataengine/plasma_comic_krossprovider.so
-/usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_comic.so
+/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.weather.so
 /usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_konsoleprofiles.so
-/usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_potd.so
 /usr/lib64/qt5/plugins/plasmacalendarplugins/astronomicalevents.so
 /usr/lib64/qt5/plugins/plasmacalendarplugins/astronomicalevents/AstronomicalEventsConfig.qml
 /usr/lib64/qt5/plugins/potd/plasma_potd_apodprovider.so
@@ -446,6 +450,8 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/private/timer/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/weather/libweatherplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/weather/qmldir
+/usr/lib64/qt5/qml/org/kde/plasma/wallpapers/potd/libplasma_wallpaper_potdplugin.so
+/usr/lib64/qt5/qml/org/kde/plasma/wallpapers/potd/qmldir
 /usr/lib64/qt5/qml/org/kde/plasmacalendar/astronomicaleventsconfig/libplasmacalendarastronomicaleventsconfig.so
 /usr/lib64/qt5/qml/org/kde/plasmacalendar/astronomicaleventsconfig/qmldir
 
@@ -458,6 +464,7 @@ popd
 /usr/share/package-licenses/kdeplasma-addons/6f1f675aa5f6a2bbaa573b8343044b166be28399
 /usr/share/package-licenses/kdeplasma-addons/757b86330df80f81143d5916b3e92b4bcb1b1890
 /usr/share/package-licenses/kdeplasma-addons/7d9831e05094ce723947d729c2a46a09d6e90275
+/usr/share/package-licenses/kdeplasma-addons/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
 /usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
 /usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/kdeplasma-addons/e712eadfab0d2357c0f50f599ef35ee0d87534cb
