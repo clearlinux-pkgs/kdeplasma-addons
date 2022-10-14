@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.25.5
-Release  : 73
-URL      : https://download.kde.org/stable/plasma/5.25.5/kdeplasma-addons-5.25.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.25.5/kdeplasma-addons-5.25.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.25.5/kdeplasma-addons-5.25.5.tar.xz.sig
+Version  : 5.26.0
+Release  : 74
+URL      : https://download.kde.org/stable/plasma/5.26.0/kdeplasma-addons-5.26.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.0/kdeplasma-addons-5.26.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.0/kdeplasma-addons-5.26.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -20,9 +20,10 @@ Requires: kdeplasma-addons-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
+BuildRequires : icu4c-dev
 BuildRequires : kholidays-dev
-BuildRequires : ki18n-dev
 BuildRequires : krunner-dev
+BuildRequires : networkmanager-qt-dev
 BuildRequires : purpose-dev
 BuildRequires : qtwebengine-dev
 
@@ -78,15 +79,15 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.25.5
-cd %{_builddir}/kdeplasma-addons-5.25.5
+%setup -q -n kdeplasma-addons-5.26.0
+cd %{_builddir}/kdeplasma-addons-5.26.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662503490
+export SOURCE_DATE_EPOCH=1665725844
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -102,7 +103,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662503490
+export SOURCE_DATE_EPOCH=1665725844
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -142,6 +143,7 @@ popd
 %find_lang plasma_applet_org.kde.plasma.userswitcher
 %find_lang plasma_applet_org.kde.plasma.weather
 %find_lang plasma_applet_org.kde.plasma_applet_dict
+%find_lang plasma_calendar_alternatecalendar
 %find_lang plasma_calendar_astronomicalevents
 %find_lang plasma_packagestructure_comic
 %find_lang plasma_runner_CharacterRunner
@@ -160,50 +162,36 @@ popd
 %defattr(-,root,root,-)
 /usr/share/icons/hicolor/scalable/apps/accessories-dictionary.svgz
 /usr/share/icons/hicolor/scalable/apps/fifteenpuzzle.svgz
-/usr/share/kdevfiletemplates/templates/plasmapotdprovider.tar.bz2
+/usr/share/kdevappwizard/templates/plasmapotdprovider.tar.bz2
 /usr/share/knsrcfiles/comic.knsrc
-/usr/share/kservices5/kwin/kwin4_desktop_switcher_previews.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_big_icons.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_compact.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_coverswitch.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_flipswitch.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_informative.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_present_windows.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_small_icons.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_text.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_thumbnail_grid.desktop
-/usr/share/kservices5/kwin/kwin4_window_switcher_thumbnails.desktop
-/usr/share/kservices5/plasma-wallpaper-org.kde.haenau.desktop
-/usr/share/kservices5/plasma-wallpaper-org.kde.hunyango.desktop
-/usr/share/kservices5/plasma-wallpaper-org.kde.potd.desktop
 /usr/share/kservicetypes5/plasma-comic.desktop
 /usr/share/kwin/desktoptabbox/previews/contents/ui/main.qml
-/usr/share/kwin/desktoptabbox/previews/metadata.desktop
+/usr/share/kwin/desktoptabbox/previews/metadata.json
 /usr/share/kwin/tabbox/big_icons/contents/ui/IconTabBox.qml
 /usr/share/kwin/tabbox/big_icons/contents/ui/main.qml
-/usr/share/kwin/tabbox/big_icons/metadata.desktop
+/usr/share/kwin/tabbox/big_icons/metadata.json
 /usr/share/kwin/tabbox/compact/contents/ui/main.qml
-/usr/share/kwin/tabbox/compact/metadata.desktop
+/usr/share/kwin/tabbox/compact/metadata.json
 /usr/share/kwin/tabbox/coverswitch/contents/ui/main.qml
-/usr/share/kwin/tabbox/coverswitch/metadata.desktop
+/usr/share/kwin/tabbox/coverswitch/metadata.json
 /usr/share/kwin/tabbox/flipswitch/contents/ui/main.qml
-/usr/share/kwin/tabbox/flipswitch/metadata.desktop
+/usr/share/kwin/tabbox/flipswitch/metadata.json
 /usr/share/kwin/tabbox/informative/contents/ui/main.qml
-/usr/share/kwin/tabbox/informative/metadata.desktop
+/usr/share/kwin/tabbox/informative/metadata.json
 /usr/share/kwin/tabbox/present_windows/contents/ui/main.qml
-/usr/share/kwin/tabbox/present_windows/metadata.desktop
+/usr/share/kwin/tabbox/present_windows/metadata.json
 /usr/share/kwin/tabbox/small_icons/contents/ui/IconTabBox.qml
 /usr/share/kwin/tabbox/small_icons/contents/ui/main.qml
-/usr/share/kwin/tabbox/small_icons/metadata.desktop
+/usr/share/kwin/tabbox/small_icons/metadata.json
 /usr/share/kwin/tabbox/text/contents/ui/main.qml
-/usr/share/kwin/tabbox/text/metadata.desktop
+/usr/share/kwin/tabbox/text/metadata.json
 /usr/share/kwin/tabbox/thumbnail_grid/contents/ui/main.qml
-/usr/share/kwin/tabbox/thumbnail_grid/metadata.desktop
+/usr/share/kwin/tabbox/thumbnail_grid/metadata.json
 /usr/share/kwin/tabbox/thumbnails/contents/ui/main.qml
-/usr/share/kwin/tabbox/thumbnails/metadata.desktop
+/usr/share/kwin/tabbox/thumbnails/metadata.json
 /usr/share/metainfo/org.kde.haenau.appdata.xml
 /usr/share/metainfo/org.kde.hunyango.appdata.xml
-/usr/share/metainfo/org.kde.plasma.activitypager.appdata.xml
+/usr/share/metainfo/org.kde.plasma.addons.katesessions.appdata.xml
 /usr/share/metainfo/org.kde.plasma.binaryclock.appdata.xml
 /usr/share/metainfo/org.kde.plasma.calculator.appdata.xml
 /usr/share/metainfo/org.kde.plasma.colorpicker.appdata.xml
@@ -228,7 +216,10 @@ popd
 /usr/share/metainfo/org.kde.potd.appdata.xml
 /usr/share/plasma/desktoptheme/default/weather/wind-arrows.svgz
 /usr/share/plasma/desktoptheme/default/widgets/timer.svgz
-/usr/share/plasma/plasmoids/org.kde.plasma.activitypager/metadata.json
+/usr/share/plasma/plasmoids/org.kde.plasma.addons.katesessions/contents/ui/KateSessionsItemDelegate.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.addons.katesessions/contents/ui/Menu.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.addons.katesessions/contents/ui/main.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.addons.katesessions/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.binaryclock/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.binaryclock/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.binaryclock/contents/ui/BinaryClock.qml
@@ -323,6 +314,7 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.quickshare/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.timer/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.timer/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.timer/contents/ui/CompactRepresentation.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.timer/contents/ui/TimerEdit.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.timer/contents/ui/TimerView.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.timer/contents/ui/configAdvanced.qml
@@ -361,29 +353,26 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.webbrowser/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/ui/AvailableDictSheet.qml
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/ui/ConfigDictionaries.qml
+/usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/ui/DictItemDelegate.qml
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma_applet_dict/metadata.json
-/usr/share/plasma/services/org.kde.plasma.dataengine.konsoleprofiles.operations
 /usr/share/plasma/wallpapers/org.kde.haenau/contents/ui/BackgroundElement.qml
 /usr/share/plasma/wallpapers/org.kde.haenau/contents/ui/BottomBackgroundElement.qml
 /usr/share/plasma/wallpapers/org.kde.haenau/contents/ui/RightBackgroundElement.qml
 /usr/share/plasma/wallpapers/org.kde.haenau/contents/ui/main.qml
 /usr/share/plasma/wallpapers/org.kde.haenau/contents/ui/wallpaper.svgz
-/usr/share/plasma/wallpapers/org.kde.haenau/metadata.desktop
 /usr/share/plasma/wallpapers/org.kde.haenau/metadata.json
 /usr/share/plasma/wallpapers/org.kde.hunyango/contents/ui/main.qml
 /usr/share/plasma/wallpapers/org.kde.hunyango/contents/ui/wallpaper.svgz
-/usr/share/plasma/wallpapers/org.kde.hunyango/metadata.desktop
 /usr/share/plasma/wallpapers/org.kde.hunyango/metadata.json
 /usr/share/plasma/wallpapers/org.kde.potd/contents/config/main.xml
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/ActionContextMenu.qml
-/usr/share/plasma/wallpapers/org.kde.potd/contents/ui/SelectableLabel.qml
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/WallpaperDelegate.qml
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/WallpaperPreview.qml
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/config.qml
 /usr/share/plasma/wallpapers/org.kde.potd/contents/ui/main.qml
-/usr/share/plasma/wallpapers/org.kde.potd/metadata.desktop
 /usr/share/plasma/wallpapers/org.kde.potd/metadata.json
 /usr/share/qlogging-categories5/plasma_comic.categories
 
@@ -416,7 +405,8 @@ popd
 /usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.grouping.so
 /usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.private.grouping.so
 /usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.weather.so
-/usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_konsoleprofiles.so
+/usr/lib64/qt5/plugins/plasmacalendarplugins/alternatecalendar.so
+/usr/lib64/qt5/plugins/plasmacalendarplugins/alternatecalendar/AlternateCalendarConfig.qml
 /usr/lib64/qt5/plugins/plasmacalendarplugins/astronomicalevents.so
 /usr/lib64/qt5/plugins/plasmacalendarplugins/astronomicalevents/AstronomicalEventsConfig.qml
 /usr/lib64/qt5/plugins/potd/plasma_potd_apodprovider.so
@@ -442,6 +432,8 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/private/nightcolorcontrol/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/notes/libnotesplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/notes/qmldir
+/usr/lib64/qt5/qml/org/kde/plasma/private/profiles/libprofiles_qml_plugin.so
+/usr/lib64/qt5/qml/org/kde/plasma/private/profiles/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/purpose/libpurposeplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/private/purpose/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/private/quicklaunch/libquicklaunchplugin.so
@@ -452,6 +444,8 @@ popd
 /usr/lib64/qt5/qml/org/kde/plasma/private/weather/qmldir
 /usr/lib64/qt5/qml/org/kde/plasma/wallpapers/potd/libplasma_wallpaper_potdplugin.so
 /usr/lib64/qt5/qml/org/kde/plasma/wallpapers/potd/qmldir
+/usr/lib64/qt5/qml/org/kde/plasmacalendar/alternatecalendarconfig/libplasmacalendaralternatecalendarconfig.so
+/usr/lib64/qt5/qml/org/kde/plasmacalendar/alternatecalendarconfig/qmldir
 /usr/lib64/qt5/qml/org/kde/plasmacalendar/astronomicaleventsconfig/libplasmacalendarastronomicaleventsconfig.so
 /usr/lib64/qt5/qml/org/kde/plasmacalendar/astronomicaleventsconfig/qmldir
 
@@ -469,6 +463,6 @@ popd
 /usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/kdeplasma-addons/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
-%files locales -f plasma_applet_org.kde.plasma.binaryclock.lang -f plasma_applet_org.kde.plasma.calculator.lang -f plasma_applet_org.kde.plasma.colorpicker.lang -f plasma_applet_org.kde.plasma.comic.lang -f plasma_applet_org.kde.plasma.diskquota.lang -f plasma_applet_org.kde.plasma.fifteenpuzzle.lang -f plasma_applet_org.kde.plasma.fuzzyclock.lang -f plasma_applet_org.kde.plasma.keyboardindicator.lang -f plasma_applet_org.kde.plasma.konsoleprofiles.lang -f plasma_applet_org.kde.plasma.mediaframe.lang -f plasma_applet_org.kde.plasma.nightcolorcontrol.lang -f plasma_applet_org.kde.plasma.notes.lang -f plasma_applet_org.kde.plasma.private.grouping.lang -f plasma_applet_org.kde.plasma.quicklaunch.lang -f plasma_applet_org.kde.plasma.quickshare.lang -f plasma_applet_org.kde.plasma.timer.lang -f plasma_applet_org.kde.plasma.userswitcher.lang -f plasma_applet_org.kde.plasma.weather.lang -f plasma_applet_org.kde.plasma_applet_dict.lang -f plasma_calendar_astronomicalevents.lang -f plasma_packagestructure_comic.lang -f plasma_runner_CharacterRunner.lang -f plasma_runner_converterrunner.lang -f plasma_runner_datetime.lang -f plasma_runner_katesessions.lang -f plasma_runner_konsoleprofiles.lang -f plasma_runner_krunner_dictionary.lang -f plasma_runner_spellcheckrunner.lang -f plasma_wallpaper_org.kde.potd.lang
+%files locales -f plasma_applet_org.kde.plasma.binaryclock.lang -f plasma_applet_org.kde.plasma.calculator.lang -f plasma_applet_org.kde.plasma.colorpicker.lang -f plasma_applet_org.kde.plasma.comic.lang -f plasma_applet_org.kde.plasma.diskquota.lang -f plasma_applet_org.kde.plasma.fifteenpuzzle.lang -f plasma_applet_org.kde.plasma.fuzzyclock.lang -f plasma_applet_org.kde.plasma.keyboardindicator.lang -f plasma_applet_org.kde.plasma.konsoleprofiles.lang -f plasma_applet_org.kde.plasma.mediaframe.lang -f plasma_applet_org.kde.plasma.nightcolorcontrol.lang -f plasma_applet_org.kde.plasma.notes.lang -f plasma_applet_org.kde.plasma.private.grouping.lang -f plasma_applet_org.kde.plasma.quicklaunch.lang -f plasma_applet_org.kde.plasma.quickshare.lang -f plasma_applet_org.kde.plasma.timer.lang -f plasma_applet_org.kde.plasma.userswitcher.lang -f plasma_applet_org.kde.plasma.weather.lang -f plasma_applet_org.kde.plasma_applet_dict.lang -f plasma_calendar_alternatecalendar.lang -f plasma_calendar_astronomicalevents.lang -f plasma_packagestructure_comic.lang -f plasma_runner_CharacterRunner.lang -f plasma_runner_converterrunner.lang -f plasma_runner_datetime.lang -f plasma_runner_katesessions.lang -f plasma_runner_konsoleprofiles.lang -f plasma_runner_krunner_dictionary.lang -f plasma_runner_spellcheckrunner.lang -f plasma_wallpaper_org.kde.potd.lang
 %defattr(-,root,root,-)
 
