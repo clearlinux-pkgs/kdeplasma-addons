@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 5.26.3
-Release  : 77
-URL      : https://download.kde.org/stable/plasma/5.26.3/kdeplasma-addons-5.26.3.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.3/kdeplasma-addons-5.26.3.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.3/kdeplasma-addons-5.26.3.tar.xz.sig
+Version  : 5.26.4
+Release  : 78
+URL      : https://download.kde.org/stable/plasma/5.26.4/kdeplasma-addons-5.26.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.4/kdeplasma-addons-5.26.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.4/kdeplasma-addons-5.26.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -28,10 +28,9 @@ BuildRequires : purpose-dev
 BuildRequires : qtwebengine-dev
 
 %description
-Kate Session Runner
-========================
-This Runner loads a list of Kate's sessions and matches
-KRunner's queries against it.
+Plasma Picture-Of-The-Day Provider
+----------------------------------
+-- Note --
 
 %package data
 Summary: data components for the kdeplasma-addons package.
@@ -80,15 +79,15 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-5.26.3
-cd %{_builddir}/kdeplasma-addons-5.26.3
+%setup -q -n kdeplasma-addons-5.26.4
+cd %{_builddir}/kdeplasma-addons-5.26.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667923650
+export SOURCE_DATE_EPOCH=1669818584
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -104,7 +103,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667923650
+export SOURCE_DATE_EPOCH=1669818584
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
