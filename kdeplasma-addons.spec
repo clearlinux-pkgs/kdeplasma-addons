@@ -7,7 +7,7 @@
 #
 Name     : kdeplasma-addons
 Version  : 5.27.4
-Release  : 85
+Release  : 86
 URL      : https://download.kde.org/stable/plasma/5.27.4/kdeplasma-addons-5.27.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.27.4/kdeplasma-addons-5.27.4.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.27.4/kdeplasma-addons-5.27.4.tar.xz.sig
@@ -25,6 +25,7 @@ BuildRequires : icu4c-dev
 BuildRequires : kholidays-dev
 BuildRequires : krunner-dev
 BuildRequires : networkmanager-qt-dev
+BuildRequires : plasma-framework-dev
 BuildRequires : purpose-dev
 BuildRequires : qtwebengine-dev
 # Suppress stripping binaries
@@ -91,23 +92,40 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680715404
+export SOURCE_DATE_EPOCH=1683654048
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1680715404
+export SOURCE_DATE_EPOCH=1683654048
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -126,6 +144,9 @@ cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32 || :
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/e458941548e0864907e654fa2e192844ae90fc32 || :
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/adadb67a9875aeeac285309f1eab6e47d9ee08a7 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
@@ -163,6 +184,7 @@ popd
 %find_lang plasma_runner_krunner_dictionary
 %find_lang plasma_runner_spellcheckrunner
 %find_lang plasma_wallpaper_org.kde.potd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -391,6 +413,7 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libplasmapotdprovidercore.so
 /usr/include/plasma/potdprovider/plasma_potd_export.h
 /usr/include/plasma/potdprovider/potdprovider.h
 /usr/lib64/cmake/PlasmaPotdProvider/PlasmaPotdProviderConfig.cmake
@@ -401,6 +424,49 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libplasmapotdprovidercore.so.1
+/V3/usr/lib64/libplasmapotdprovidercore.so.1.0.0
+/V3/usr/lib64/qt5/plugins/kf5/krunner/kcms/kcm_krunner_charrunner.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/kcms/kcm_krunner_dictionary.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/kcms/kcm_krunner_spellcheck.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/krunner_charrunner.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/krunner_dictionary.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/krunner_katesessions.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/krunner_konsoleprofiles.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/krunner_spellcheck.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/org.kde.datetime.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/unitconverter.so
+/V3/usr/lib64/qt5/plugins/kpackage/packagestructure/plasma_comic.so
+/V3/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.comic.so
+/V3/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.grouping.so
+/V3/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.private.grouping.so
+/V3/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.weather.so
+/V3/usr/lib64/qt5/plugins/plasmacalendarplugins/alternatecalendar.so
+/V3/usr/lib64/qt5/plugins/plasmacalendarplugins/astronomicalevents.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_apodprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_bingprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_epodprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_flickrprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_natgeoprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_noaaprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_simonstalenhagprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_unsplashprovider.so
+/V3/usr/lib64/qt5/plugins/potd/plasma_potd_wcpotdprovider.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/colorpicker/libcolorpickerplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/dict/libdictplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/diskquota/libdiskquotaplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/fifteenpuzzle/libfifteenpuzzleplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/mediaframe/libmediaframeplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/nightcolorcontrol/libnightcolorcontrolplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/notes/libnotesplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/profiles/libprofiles_qml_plugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/purpose/libpurposeplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/quicklaunch/libquicklaunchplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/timer/libtimerplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/weather/libweatherplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/wallpapers/potd/libplasma_wallpaper_potdplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasmacalendar/alternatecalendarconfig/libplasmacalendaralternatecalendarconfig.so
+/V3/usr/lib64/qt5/qml/org/kde/plasmacalendar/astronomicaleventsconfig/libplasmacalendarastronomicaleventsconfig.so
 /usr/lib64/libplasmapotdprovidercore.so.1
 /usr/lib64/libplasmapotdprovidercore.so.1.0.0
 /usr/lib64/qt5/plugins/kf5/krunner/kcms/kcm_krunner_charrunner.so
