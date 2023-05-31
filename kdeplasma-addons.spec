@@ -7,7 +7,7 @@
 #
 Name     : kdeplasma-addons
 Version  : 5.27.5
-Release  : 87
+Release  : 88
 URL      : https://download.kde.org/stable/plasma/5.27.5/kdeplasma-addons-5.27.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.27.5/kdeplasma-addons-5.27.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.27.5/kdeplasma-addons-5.27.5.tar.xz.sig
@@ -92,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684811098
+export SOURCE_DATE_EPOCH=1685572556
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -125,7 +125,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684811098
+export SOURCE_DATE_EPOCH=1685572556
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -413,7 +413,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libplasmapotdprovidercore.so
 /usr/include/plasma/potdprovider/plasma_potd_export.h
 /usr/include/plasma/potdprovider/potdprovider.h
 /usr/lib64/cmake/PlasmaPotdProvider/PlasmaPotdProviderConfig.cmake
@@ -424,7 +423,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libplasmapotdprovidercore.so.1
 /V3/usr/lib64/libplasmapotdprovidercore.so.1.0.0
 /V3/usr/lib64/qt5/plugins/kf5/krunner/kcms/kcm_krunner_charrunner.so
 /V3/usr/lib64/qt5/plugins/kf5/krunner/kcms/kcm_krunner_dictionary.so
