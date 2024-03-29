@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kdeplasma-addons
-Version  : 6.0.2
-Release  : 101
-URL      : https://download.kde.org/stable/plasma/6.0.2/kdeplasma-addons-6.0.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/6.0.2/kdeplasma-addons-6.0.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/6.0.2/kdeplasma-addons-6.0.2.tar.xz.sig
+Version  : 6.0.3
+Release  : 102
+URL      : https://download.kde.org/stable/plasma/6.0.3/kdeplasma-addons-6.0.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/6.0.3/kdeplasma-addons-6.0.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/6.0.3/kdeplasma-addons-6.0.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
@@ -35,6 +35,7 @@ BuildRequires : kjobwidgets-dev
 BuildRequires : knotifications-dev
 BuildRequires : krunner-dev
 BuildRequires : kservice-dev
+BuildRequires : plasma5support-dev
 BuildRequires : qt6base-dev
 BuildRequires : qt6webengine-dev
 # Suppress stripping binaries
@@ -42,9 +43,10 @@ BuildRequires : qt6webengine-dev
 %define debug_package %{nil}
 
 %description
-Plasma Picture-Of-The-Day Provider
-----------------------------------
--- Note --
+Kate Session Runner
+========================
+This Runner loads a list of Kate's sessions and matches
+KRunner's queries against it.
 
 %package data
 Summary: data components for the kdeplasma-addons package.
@@ -93,15 +95,15 @@ locales components for the kdeplasma-addons package.
 
 
 %prep
-%setup -q -n kdeplasma-addons-6.0.2
-cd %{_builddir}/kdeplasma-addons-6.0.2
+%setup -q -n kdeplasma-addons-6.0.3
+cd %{_builddir}/kdeplasma-addons-6.0.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1711144267
+export SOURCE_DATE_EPOCH=1711724321
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -162,7 +164,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1711144267
+export SOURCE_DATE_EPOCH=1711724321
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdeplasma-addons
 cp %{_builddir}/kdeplasma-addons-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kdeplasma-addons/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
