@@ -1,17 +1,17 @@
-libplasmapotdprovidercore.so.2:_ZN12PotdProvider11qt_metacallEN11QMetaObject4CallEiPPv
-libplasmapotdprovidercore.so.2:_ZN12PotdProvider11qt_metacastEPKc
-libplasmapotdprovidercore.so.2:_ZN12PotdProvider5errorEPS_
-libplasmapotdprovidercore.so.2:_ZN12PotdProvider8finishedEPS_RK6QImage
-libplasmapotdprovidercore.so.2:_ZN12PotdProviderC1EP7QObjectRK15KPluginMetaDataRK5QListI8QVariantE
-libplasmapotdprovidercore.so.2:_ZN12PotdProviderC2EP7QObjectRK15KPluginMetaDataRK5QListI8QVariantE
-libplasmapotdprovidercore.so.2:_ZN12PotdProviderD0Ev
-libplasmapotdprovidercore.so.2:_ZN12PotdProviderD1Ev
-libplasmapotdprovidercore.so.2:_ZN12PotdProviderD2Ev
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider10identifierEv
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider10metaObjectEv
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider4nameEv
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider5titleEv
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider6authorEv
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider7infoUrlEv
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider9localPathEv
-libplasmapotdprovidercore.so.2:_ZNK12PotdProvider9remoteUrlEv
+libplasmapotdprovidercore.so.2:PotdProvider::qt_metacall(QMetaObject::Call, int, void**)
+libplasmapotdprovidercore.so.2:PotdProvider::qt_metacast(char const*)
+libplasmapotdprovidercore.so.2:PotdProvider::error(PotdProvider*)
+libplasmapotdprovidercore.so.2:PotdProvider::finished(PotdProvider*, QImage const&)
+libplasmapotdprovidercore.so.2:PotdProvider::PotdProvider(QObject*, KPluginMetaData const&, QList<QVariant> const&)
+libplasmapotdprovidercore.so.2:PotdProvider::PotdProvider(QObject*, KPluginMetaData const&, QList<QVariant> const&)
+libplasmapotdprovidercore.so.2:PotdProvider::~PotdProvider()
+libplasmapotdprovidercore.so.2:PotdProvider::~PotdProvider()
+libplasmapotdprovidercore.so.2:PotdProvider::~PotdProvider()
+libplasmapotdprovidercore.so.2:PotdProvider::identifier() const
+libplasmapotdprovidercore.so.2:PotdProvider::metaObject() const
+libplasmapotdprovidercore.so.2:PotdProvider::name() const
+libplasmapotdprovidercore.so.2:PotdProvider::title() const
+libplasmapotdprovidercore.so.2:PotdProvider::author() const
+libplasmapotdprovidercore.so.2:PotdProvider::infoUrl() const
+libplasmapotdprovidercore.so.2:PotdProvider::localPath() const
+libplasmapotdprovidercore.so.2:PotdProvider::remoteUrl() const
