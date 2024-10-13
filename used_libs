@@ -32,7 +32,7 @@ libQt6Qml.so.6
 libQt6Quick.so.6
 libQt6Widgets.so.6
 libc.so.6
-libicui18n.so.73
-libicuuc.so.73
+libicui18n.so.75
+libicuuc.so.75
 libm.so.6
 libstdc++.so.6
