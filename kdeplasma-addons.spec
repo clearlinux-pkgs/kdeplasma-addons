@@ -9,7 +9,7 @@
 #
 Name     : kdeplasma-addons
 Version  : 6.2.5
-Release  : 116
+Release  : 117
 URL      : https://download.kde.org/stable/plasma/6.2.5/kdeplasma-addons-6.2.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.2.5/kdeplasma-addons-6.2.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.2.5/kdeplasma-addons-6.2.5.tar.xz.sig
